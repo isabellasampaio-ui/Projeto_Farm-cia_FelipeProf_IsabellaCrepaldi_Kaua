@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>Lista Remédios</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>Lista de Remédios</h1>
+<nav>
+    <a class="botao" href="/">Página Inicial</a>
+    <a class="botao" href="/cliente">Lista Clientes</a>
+    <a class="botao" href="/tarefas/remedio">Lista Remédios</a>
+</nav>
+<br>
+
+<form action="/tarefas/remedio/enviar" method="POST">
+<label>Nome</label>
+<input type="text" name="nome" maxlength="100" required>
+
+<label>Laboratório</label>
+<input type="text" name="laboratorio" maxlength="100" required>
+
+<label>Estoque</label>
+<input type="number" name="estoque" required>
+
+<label>Preço</label>
+<input type="number" name="preco" required>
+
+<button type="submit">Adicionar Remédio</button>
+</form>
+
+<table>
+<tr>
+<th>#</th>
+<th>Nome</th>
+<th>Laboratório</th>
+<th>Estoque</th>
+<th>Preço</th>
+<th>Ações</th>
+</tr>
+{% for remedio in remedios %}
+<tr>
+<td>{{ remedio[0] }}</td>
+<td>{{ remedio[1] }}</td>
+<td>{{ remedio[2] }}</td>
+<td>{{ remedio[3] }}</td>
+<td>{{ remedio[4] }}</td>
+<td class="acoes">
+<a class="botao editar" href="/tarefas/remedio/editar/{{ remedio[0] }}">Editar</a>
+<form action="/tarefas/remedio/excluir/{{ remedio[0] }}" method="POST">
+<button type="submit">Excluir</button>
+</form>
+ </td>
+</tr>
+{% else %}
+<tr>
+<td colspan="4">Nenhum remédio cadastrado.</td>
+ </tr>
+
+ {% endfor %}
+</table>
+</body>
+</html>

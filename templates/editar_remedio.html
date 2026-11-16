@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Remédio</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>Editar Remédio # {{ remedio[0] }}</h1>
+
+<form action="/tarefas/remedio/atualizar/{{ remedio[0] }}" method="POST">
+    <label>Nome</label>
+    <input type="text" name="nome" maxlength="100" value="{{ remedio[1] }}" required>
+
+    <label>Laboratório</label>
+    <input type="text" name="laboratorio" maxlength="100" value="{{ remedio[2] }}" required>
+
+    <label>Estoque</label>
+    <input type="number" name="estoque" value="{{ remedio[3] }}" required>
+
+    <label>Preço</label>
+    <input type="number" name="preco" value="{{ remedio[4] }}" required>
+
+    <button type="submit">Salvar alterações</button>
+    <a href="/tarefas/remedio">Cancelar</a>
+</form>
+</body>
+</html>

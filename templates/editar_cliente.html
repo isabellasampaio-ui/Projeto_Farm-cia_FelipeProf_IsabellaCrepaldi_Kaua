@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cliente</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Editar Cliente #{{ cliente[0] }}</h1>
+
+<form action="/cliente/atualizar/{{ cliente[0] }}" method="POST">
+
+    <label>Nome</label>
+    <input type="text" name="nome" maxlength="100" value="{{ cliente[1] }}" required>
+
+    <label>Telefone</label>
+    <input type="text" name="telefone" value="{{ cliente[2] }}" required>
+
+    <label>Idade</label>
+    <input type="number" name="idade" value="{{ cliente[3] }}" required>
+
+    <label>Data de Cadastro</label>
+    <input type="date" name="data_cadastro" value="{{ cliente[4] }}" required>
+
+    <button type="submit">Salvar Alterações</button>
+
+    <a href="/cliente">Cancelar</a>
+
+</form>
+
+</body>
+</html>
